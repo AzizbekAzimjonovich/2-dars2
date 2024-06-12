@@ -71,7 +71,6 @@ function updateCards() {
         const isMerriedText = user.isMerried
             ? "I'm married"
             : "I'm not married yet";
-        const emoji = user.isMerried ? "&#128526;" : "";
         const cardHtml = `
       <div class="col">
         <div class="card h-100">
@@ -86,7 +85,6 @@ function updateCards() {
               <span class="text-primary">${user.job}</span> now.
               <br />
               <span class="text-primary">${isMerriedText}</span>
-              <span class="emoji">${emoji}</span>
             </p>
             <button type="button" class="btn btn-outline-danger" onclick="deleteCard(${index})">
               Delete
