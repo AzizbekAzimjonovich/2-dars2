@@ -133,7 +133,7 @@ function deleteCard(index: number) {
 
 function toggleNoUserMessage() {
   if (users.length === 0) {
-    noUserMessage.style.display = "block";
+    noUserMessage.style.display = "flex";
   } else {
     noUserMessage.style.display = "none";
   }
