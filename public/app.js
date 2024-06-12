@@ -4,74 +4,69 @@ const cards = document.querySelector("#cards");
 const noUserMessage = document.querySelector(".noUser");
 const users = [];
 form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const nameInput = document.querySelector("#name");
-    const lastnameInput = document.querySelector("#lastname");
-    const fromInput = document.querySelector("#from");
-    const ageInput = document.querySelector("#age");
-    const jobInput = document.querySelector("#job");
-    const merriedInput = document.querySelector("#exampleCheck1");
-    if (!validateForm(nameInput, lastnameInput, fromInput, ageInput, jobInput)) {
-        return;
-    }
-    const user = {
-        firstName: nameInput.value,
-        lastName: lastnameInput.value,
-        from: fromInput.value,
-        age: Number(ageInput.value),
-        job: jobInput.value,
-        isMerried: merriedInput.checked,
-    };
-    users.push(user);
-    updateCards();
-    form.reset();
+  event.preventDefault();
+  const nameInput = document.querySelector("#name");
+  const lastnameInput = document.querySelector("#lastname");
+  const fromInput = document.querySelector("#from");
+  const ageInput = document.querySelector("#age");
+  const jobInput = document.querySelector("#job");
+  const merriedInput = document.querySelector("#exampleCheck1");
+  if (!validateForm(nameInput, lastnameInput, fromInput, ageInput, jobInput)) {
+    return;
+  }
+  const user = {
+    firstName: nameInput.value,
+    lastName: lastnameInput.value,
+    from: fromInput.value,
+    age: Number(ageInput.value),
+    job: jobInput.value,
+    isMerried: merriedInput.checked,
+  };
+  users.push(user);
+  updateCards();
+  form.reset();
 });
 function validateForm(nameInput, lastnameInput, fromInput, ageInput, jobInput) {
-    let isValid = true;
-    if (!nameInput.value) {
-        nameInput.classList.add("is-invalid");
-        isValid = false;
-    }
-    else {
-        nameInput.classList.remove("is-invalid");
-    }
-    if (!lastnameInput.value) {
-        lastnameInput.classList.add("is-invalid");
-        isValid = false;
-    }
-    else {
-        lastnameInput.classList.remove("is-invalid");
-    }
-    if (!fromInput.value) {
-        fromInput.classList.add("is-invalid");
-        isValid = false;
-    }
-    else {
-        fromInput.classList.remove("is-invalid");
-    }
-    if (!ageInput.value) {
-        ageInput.classList.add("is-invalid");
-        isValid = false;
-    }
-    else {
-        ageInput.classList.remove("is-invalid");
-    }
-    if (!jobInput.value) {
-        jobInput.classList.add("is-invalid");
-        isValid = false;
-    }
-    else {
-        jobInput.classList.remove("is-invalid");
-    }
-    return isValid;
+  let isValid = true;
+  if (!nameInput.value) {
+    nameInput.classList.add("is-invalid");
+    isValid = false;
+  } else {
+    nameInput.classList.remove("is-invalid");
+  }
+  if (!lastnameInput.value) {
+    lastnameInput.classList.add("is-invalid");
+    isValid = false;
+  } else {
+    lastnameInput.classList.remove("is-invalid");
+  }
+  if (!fromInput.value) {
+    fromInput.classList.add("is-invalid");
+    isValid = false;
+  } else {
+    fromInput.classList.remove("is-invalid");
+  }
+  if (!ageInput.value) {
+    ageInput.classList.add("is-invalid");
+    isValid = false;
+  } else {
+    ageInput.classList.remove("is-invalid");
+  }
+  if (!jobInput.value) {
+    jobInput.classList.add("is-invalid");
+    isValid = false;
+  } else {
+    jobInput.classList.remove("is-invalid");
+  }
+  return isValid;
 }
 function updateCards() {
-    cards.innerHTML = "";
-    users.forEach((user, index) => {
-        const isMerriedText = user.isMerried
-            ? "I'm married"
-            : "I'm not married yet";
-        const cardHtml = `
+  cards.innerHTML = "";
+  users.forEach((user, index) => {
+    const isMerriedText = user.isMerried
+      ? "I'm married"
+      : "I'm not married yet";
+    const cardHtml = `
       <div class="col">
         <div class="card h-100">
           <div class="card-body">
@@ -93,19 +88,20 @@ function updateCards() {
         </div>
       </div>
     `;
-        cards === null || cards === void 0 ? void 0 : cards.insertAdjacentHTML("beforeend", cardHtml);
-    });
-    toggleNoUserMessage();
+    cards === null || cards === void 0
+      ? void 0
+      : cards.insertAdjacentHTML("beforeend", cardHtml);
+  });
+  toggleNoUserMessage();
 }
 function deleteCard(index) {
-    users.splice(index, 1);
-    updateCards();
+  users.splice(index, 1);
+  updateCards();
 }
 function toggleNoUserMessage() {
-    if (users.length === 0) {
-        noUserMessage.style.display = "flex";
-    }
-    else {
-        noUserMessage.style.display = "none";
-    }
+  if (users.length === 0) {
+    noUserMessage.style.display = "flex";
+  } else {
+    noUserMessage.style.display = "none";
+  }
 }
